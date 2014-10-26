@@ -8,37 +8,51 @@
 
 #import "GameScene.h"
 
-@implementation GameScene
+@implementation GameScene{
+
+    SKSpriteNode *_paddle;
+
+    CGPoint _touchLocation;
+}
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
     
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 65;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
+    self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
     
-    [self addChild:myLabel];
+    //Setup Paddle
+    _paddle = [SKSpriteNode spriteNodeWithImageNamed:@"Paddle"];
+    _paddle.position = CGPointMake(self.size.width * 0.5, 90);
+    [self addChild:_paddle];
+    
+    
+    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
-    
     for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
+        _touchLocation = [touch locationInNode:self];
+    }
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    for (UITouch *touch in touches) {
         
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+        //Calculating how far touch moved on X-Axis
+        CGFloat xMovement = [touch locationInNode:self].x - _touchLocation.x;
+        CGFloat paddleMinX = _paddle.size.width * -0.25;
+        CGFloat paddleMaxX = self.size.width + (_paddle.size.width * 0.25);
         
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
+        //Move Paddle
+        _paddle.position = CGPointMake(_paddle.position.x +xMovement, _paddle.position.y);
+
+        if (_paddle.position.x < paddleMinX) {
+         _paddle.position = CGPointMake(paddleMinX, _paddle.position.y);   
+        }
+        if (_paddle.position.x > paddleMaxX) _paddle.position = CGPointMake(paddleMaxX, _paddle.position.y);
         
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
+        _touchLocation = [touch locationInNode:self];
     }
 }
 

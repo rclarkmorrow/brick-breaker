@@ -16,6 +16,9 @@
 		A8B8AD4919FD71C900B1E00C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8B8AD4819FD71C900B1E00C /* Images.xcassets */; };
 		A8B8AD4C19FD71C900B1E00C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8B8AD4A19FD71C900B1E00C /* LaunchScreen.xib */; };
 		A8B8AD5819FD71C900B1E00C /* Brick_BreakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B8AD5719FD71C900B1E00C /* Brick_BreakerTests.m */; };
+		A8B8AD6619FD725D00B1E00C /* BallBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B8AD6319FD725D00B1E00C /* BallBlue@2x.png */; };
+		A8B8AD6719FD725D00B1E00C /* BrickGreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B8AD6419FD725D00B1E00C /* BrickGreen@2x.png */; };
+		A8B8AD6819FD725D00B1E00C /* Paddle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8B8AD6519FD725D00B1E00C /* Paddle@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		A8B8AD5119FD71C900B1E00C /* Brick BreakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Brick BreakerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8B8AD5619FD71C900B1E00C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8B8AD5719FD71C900B1E00C /* Brick_BreakerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Brick_BreakerTests.m; sourceTree = "<group>"; };
+		A8B8AD6319FD725D00B1E00C /* BallBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BallBlue@2x.png"; sourceTree = "<group>"; };
+		A8B8AD6419FD725D00B1E00C /* BrickGreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BrickGreen@2x.png"; sourceTree = "<group>"; };
+		A8B8AD6519FD725D00B1E00C /* Paddle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Paddle@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,7 @@
 		A8B8AD3519FD71C900B1E00C /* Brick Breaker */ = {
 			isa = PBXGroup;
 			children = (
+				A8B8AD6219FD721400B1E00C /* Images */,
 				A8B8AD3A19FD71C900B1E00C /* AppDelegate.h */,
 				A8B8AD3B19FD71C900B1E00C /* AppDelegate.m */,
 				A8B8AD3D19FD71C900B1E00C /* GameScene.h */,
@@ -125,6 +132,16 @@
 				A8B8AD5619FD71C900B1E00C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A8B8AD6219FD721400B1E00C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A8B8AD6319FD725D00B1E00C /* BallBlue@2x.png */,
+				A8B8AD6419FD725D00B1E00C /* BrickGreen@2x.png */,
+				A8B8AD6519FD725D00B1E00C /* Paddle@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +226,9 @@
 			files = (
 				A8B8AD4C19FD71C900B1E00C /* LaunchScreen.xib in Resources */,
 				A8B8AD4919FD71C900B1E00C /* Images.xcassets in Resources */,
+				A8B8AD6719FD725D00B1E00C /* BrickGreen@2x.png in Resources */,
+				A8B8AD6619FD725D00B1E00C /* BallBlue@2x.png in Resources */,
+				A8B8AD6819FD725D00B1E00C /* Paddle@2x.png in Resources */,
 				A8B8AD4119FD71C900B1E00C /* GameScene.sks in Resources */,
 				A8B8AD4719FD71C900B1E00C /* Main.storyboard in Resources */,
 			);

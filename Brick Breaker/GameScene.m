@@ -21,7 +21,7 @@
 
 @implementation GameScene{
 
-    //Sprites & Nodes
+    //Sprite & Node Variables.
     
     SKNode *_brickLayer;
     SKSpriteNode *_paddle;
@@ -29,16 +29,16 @@
     BBMenu *_menu;
     BBTopBar *_topBar;
     BBHeart *_heartBar;
-    NSArray *_gameLevels;
     
-    //Sounds
+    //Sound Action Class Variables.
     
     BBPlaySounds *_didBallBounce;
     BBPlaySounds *_didLevelUp;
     BBPlaySounds *_didLoseLife;
     BBPlaySounds *_didPaddleBounce;
     
-    //Other Variables
+    //Evaluator Variables.
+    
     
     CGPoint _touchLocation;
     CGFloat _ballSpeed;
@@ -47,16 +47,18 @@
     BOOL _isBallReleased;
     BOOL _isPositioningBall;
     BOOL _isLevelFinished;
+    
+    //Game Object Arrays.
+    
+    NSArray *_gameLevels;
 }
 
-#pragma mark - View Load
+#pragma mark - View Load & Initial Setup
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
 
-#pragma mark - Initial Values Set Up
-    
-    //Game Physics, Bounds & Layers
+    //Base Game Physics, Bounds & Layers
     
     _frameWidth = self.frame.size.width;
     _frameHeight = self.frame.size.height;
@@ -71,14 +73,14 @@
     _brickLayer.position = CGPointMake(0, _frameHeight - 28);
     [self addChild:_brickLayer];
     
-    //Load Initial Sound Actions
+    //Initialise Sound Actions.
     
     _didBallBounce = [[BBPlaySounds alloc]initWithType:BallBounce andWaitForCompletion:NO];
     _didLevelUp = [[BBPlaySounds alloc]initWithType:LevelUp andWaitForCompletion:NO];
     _didLoseLife = [[BBPlaySounds alloc]initWithType:LoseLife andWaitForCompletion:NO];
     _didPaddleBounce = [[BBPlaySounds alloc]initWithType:PaddleBounce andWaitForCompletion:NO];
     
-    //Load Menus & UI
+    //Initialize Menus & UI
     
     _menu= [[BBMenu alloc]initWithFrameWidth:_frameWidth];
     _menu.position = CGPointMake(_frameWidth * 0.5, _frameHeight * 0.5);
@@ -98,8 +100,7 @@
     
     [self newBall];
     
-    //Initialize Game. Note: Must occur after menu & UI setup completed so evaluater
-    //functions evaluate with initial values and update UI Elements;
+    //Initialize Game. [Note: Must occur after menu & UI setup completed so evaluator functions will pass to classes and update UI elements.
     
     BBLevelFactory *factory = [[BBLevelFactory alloc]init];
     _gameLevels = [factory gameLevels];
@@ -117,7 +118,7 @@
     
 }
 
-#pragma mark - Physics Methods & Parameters
+#pragma mark - Physics Methods & Evaluations
 
 
 -(void)didBeginContact:(SKPhysicsContact *)contact {
@@ -132,6 +133,8 @@
         firstBody = contact.bodyB;
         secondBody = contact.bodyA;
     }
+    
+    //Check for Game Object Interactions, define results & method calls to present results.
     
     if (firstBody.categoryBitMask == BALL_CATEGORY && secondBody.categoryBitMask == PADDLE_CATEGORY) {
         [self runAction:_didPaddleBounce.playSound];
@@ -161,7 +164,7 @@
 
 }
 
-#pragma mark - UI Touches Methods
+#pragma mark - UI Touch Events and Evaluation.
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
@@ -231,22 +234,29 @@
 
 #pragma mark - Evaluation Methods
 
-//Check Variable Update Methods
+//Check Variable Update Methods for UI Updates.
 
 -(void)setLives:(int)lives {
     NSLog(@"Did run set Lives");
     _lives = lives;
+    
+    //Passing current lives to heart class to update heart display array.
+    
     _heartBar.lives = lives;
+
 }
 
 -(void)setCurrentLevel:(int)currentLevel {
     _currentLevel = currentLevel;
     _levelLabel.text = [NSString stringWithFormat:@"LEVEL: %d", currentLevel +1];
+
+    //Passing current level to UI classes for display update.
+    
     _menu.levelNumber = currentLevel;
     _topBar.levelNumber = currentLevel;
 }
 
-//Check Level Completion
+//Check For Level Completion
 
 -(BOOL) didCompleteLevel {
     for (SKNode *node in _brickLayer.children) {
@@ -257,10 +267,14 @@
     return YES;
 }
 
+
 //Sprite Kit Cycle Update Methods
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    
+    
+    //Check for Level Completion, Loss of Life  &  Game Loss at the start of the frame load cycle.
     
     if ([self didCompleteLevel]) {
         self.currentLevel++;
@@ -293,6 +307,8 @@
 -(void)didSimulatePhysics {
     //Evaluates about halfway through frame cycle
     
+    //Clear out any balls left off screen.
+    
     [self enumerateChildNodesWithName:@"ball" usingBlock:^(SKNode *node, BOOL *stop) {
         if (node.frame.origin.y + node.frame.size.height < 0){
             [node runAction:[SKAction removeFromParent]];
@@ -309,6 +325,8 @@
 }
 
 #pragma mark - Helper Methods
+
+// Note: Explore abstracting these to class methods.
 
 -(void)newBall {
     [self enumerateChildNodesWithName:@"ball" usingBlock:^(SKNode *node, BOOL *stop) {

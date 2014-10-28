@@ -53,6 +53,8 @@ if (self) {
     return self;
 }
 
+//Evaluator for when a ball collides with a brick.
+
 -(void)hit {
     
     switch (self.type) {
@@ -79,6 +81,9 @@ if (self) {
             break;
     }
 }
+
+//Function governing the explosion of bricks: consider making the color of the Emitter dynamic
+//according to color of brick.
 
 -(void)didBrickBreak {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"BrickBreak" ofType:@"sks"];

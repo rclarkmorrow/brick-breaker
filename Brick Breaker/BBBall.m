@@ -12,6 +12,7 @@
 
 @implementation BBBall
 
+//Create instance of game ball.
 
 -(instancetype) initWithPosition:(CGPoint)position andVelocity:(CGVector)velocity andFrameWidth:(CGFloat)frameWidth {
     
@@ -37,37 +38,7 @@
 
 -(void) newBall {
     
+    //Space Holder to implement a new ball from main game controlelr
 }
-
-
-
-//
-//
-//-(SKSpriteNode *) createBall {
-//    SKSpriteNode *ball = [SKSpriteNode spriteNodeWithImageNamed:@"BallBlue"];
-//    ball.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ball.size.width * 0.5];
-//    ball.name = @"ball";
-//    ball.position = CGPointMake(0, _paddle.size.height);
-//    ball.physicsBody.linearDamping = 0.0;
-//    ball.physicsBody.friction = 0.0;
-//    ball.physicsBody.restitution = 1.0;
-//    return ball;
-//}
-//
-//
-//
-//-(SKSpriteNode *) createBallWithPosition:(CGPoint)position andVelocity:(CGVector)velocity {
-//    SKSpriteNode *ball = [self createBall];
-//    ball.position = position;
-//    ball.physicsBody.velocity = velocity;
-//    ball.physicsBody.categoryBitMask = BALL_CATEGORY;
-//    ball.physicsBody.contactTestBitMask = PADDLE_CATEGORY | BRICK_CATEGORY | EDGE_CATEGORY;
-//    [self addChild: ball];
-//    return ball;
-//}
-
-
-
-
 
 @end

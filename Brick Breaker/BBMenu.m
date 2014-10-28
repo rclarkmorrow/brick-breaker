@@ -67,6 +67,8 @@
 
 #pragma mark - Public Methods
 
+//Show & hide menu elements.
+
 -(void)show{
     SKAction *slideLeft = [SKAction moveByX:-260.0 y:0.0 duration:0.5];
     slideLeft.timingMode = SKActionTimingEaseOut;
@@ -92,6 +94,8 @@
 }
 
 #pragma mark - Private Methods
+
+//Updates level display on main menu.
 
 -(void)setLevelNumber:(int)levelNumber {
     _levelNumber = levelNumber;

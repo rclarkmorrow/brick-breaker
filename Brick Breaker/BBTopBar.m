@@ -44,6 +44,8 @@
 
 #pragma mark - Private Methods
 
+//Updates level display on top bar.
+
 -(void)setLevelNumber:(int)levelNumber {
     _levelNumber = levelNumber;
     _levelLabel.text = [NSString stringWithFormat:@"LEVEL: %d", levelNumber + 1];

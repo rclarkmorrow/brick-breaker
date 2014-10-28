@@ -12,6 +12,8 @@
 
 @implementation BBPaddle
 
+//Creates paddle instance.
+
 -(instancetype)initWithFrameWidth:(CGFloat)frameWidth {
     
     if (self) {

@@ -13,6 +13,7 @@
     CGFloat _frameHeight;
 }
 
+//Initialize Heart w/ Parameters
 
 -(instancetype) initWithFrameWidth: (CGFloat)frameWidth andFrameHeight: (CGFloat) frameHeight {
   
@@ -25,15 +26,7 @@
     return self;
 }
 
--(void) createInitialHeartsArrayWith: (CGFloat)frameWidth andFrameHeight: (CGFloat)frameHeight {
-    for (NSUInteger i = 0; i < self.lives; i++) {
-        SKSpriteNode *displayHeart = [SKSpriteNode spriteNodeWithImageNamed:@"HeartEmpty"];
-        displayHeart.position = CGPointMake(frameWidth - ((frameWidth / 20) + (frameWidth / 11.03) * i), frameHeight - 14);
-        [self.hearts addObject:displayHeart];
-        [self addChild:displayHeart];
-        NSLog(@"Did add initial Full Heart");
-    }
-}
+//Create heart array with initial lives value & update lives when lost or gained.
 
 -(void)setLives:(int)lives{
     _lives = lives;
@@ -45,6 +38,18 @@
             if (lives > i) displayHeart.texture = [SKTexture textureWithImageNamed:@"HeartFull"];
             else           displayHeart.texture = [SKTexture textureWithImageNamed:@"HeartEmpty"];
         }
+}
+
+//Creates an array of hearts & displays them on the top bar.
+
+-(void) createInitialHeartsArrayWith: (CGFloat)frameWidth andFrameHeight: (CGFloat)frameHeight {
+    for (NSUInteger i = 0; i < self.lives; i++) {
+        SKSpriteNode *displayHeart = [SKSpriteNode spriteNodeWithImageNamed:@"HeartEmpty"];
+        displayHeart.position = CGPointMake(frameWidth - ((frameWidth / 20) + (frameWidth / 11.03) * i), frameHeight - 14);
+        [self.hearts addObject:displayHeart];
+        [self addChild:displayHeart];
+        NSLog(@"Did add initial Full Heart");
+    }
 }
 
 @end

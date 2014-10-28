@@ -10,6 +10,8 @@
 
 @implementation BBPlaySounds
 
+//Stores SKActions for sounds for instancing as variables in classes.
+
 -(instancetype)initWithType:(SoundType)type andWaitForCompletion:(bool)isWait {
     
     self = [super init];

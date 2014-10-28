@@ -10,6 +10,8 @@
 
 @implementation BBResizeToScale
 
+//Resize UI Elemens based on a design for 320 width paradigm.
+//Implemented to make game functional/proportioned in iPhone 6 & 6+
 
 -(CGSize) resizeRectangleSpriteNode:(SKSpriteNode*) theNode andFrameWidth: (CGFloat) frameWidth {
     CGFloat modWidth = 320 / theNode.size.width;

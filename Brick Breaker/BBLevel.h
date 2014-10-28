@@ -10,6 +10,8 @@
 
 @interface BBLevel : NSObject
 
+//Level properties- only needs to be one array with embeded arrays.
+
 @property (strong, nonatomic) NSArray *brickRowOne;
 @property (strong, nonatomic) NSArray *brickRowTwo;
 @property (strong, nonatomic) NSArray *brickRowThree;

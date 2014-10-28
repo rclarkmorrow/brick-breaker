@@ -11,6 +11,10 @@
 
 @implementation BBLevelFactory
 
+//Note: change level array property to be single array and implement embedded array here
+//but leave level class to implement parameters rather than constants for ball speed and
+//perhaps pass gameworld physics modifications into main game controller.
+
 -(NSArray *)gameLevels {
     
     BBLevel *levelOne = [[BBLevel alloc]init];

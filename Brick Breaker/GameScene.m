@@ -62,10 +62,12 @@
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, -128, self.frame.size.width, self.frame.size.height + 100)];
     self.physicsBody.categoryBitMask = EDGE_CATEGORY;
     
-    _brickLayer = [SKNode node];
-    _brickLayer.position = CGPointMake(0, _frameHeight - 28);
+    //Load Initial Sound Actions
     
-    [self addChild:_brickLayer];
+    _didBallBounce = [[BBPlaySounds alloc]initWithType:BallBounce andWaitForCompletion:NO];
+    _didLevelUp = [[BBPlaySounds alloc]initWithType:LevelUp andWaitForCompletion:NO];
+    _didLoseLife = [[BBPlaySounds alloc]initWithType:LoseLife andWaitForCompletion:NO];
+    _didPaddleBounce = [[BBPlaySounds alloc]initWithType:PaddleBounce andWaitForCompletion:NO];
     
     //Load Menus & UI
     
@@ -87,13 +89,9 @@
     
     [self newBall];
     
-
-    //Load Initial Sound Actions
-    
-    _didBallBounce = [[BBPlaySounds alloc]initWithType:BallBounce andWaitForCompletion:NO];
-    _didLevelUp = [[BBPlaySounds alloc]initWithType:LevelUp andWaitForCompletion:NO];
-    _didLoseLife = [[BBPlaySounds alloc]initWithType:LoseLife andWaitForCompletion:NO];
-    _didPaddleBounce = [[BBPlaySounds alloc]initWithType:PaddleBounce andWaitForCompletion:NO];
+    _brickLayer = [SKNode node];
+    _brickLayer.position = CGPointMake(0, _frameHeight - 28);
+    [self addChild:_brickLayer];
     
     //Initialize Game
     

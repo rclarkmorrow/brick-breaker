@@ -28,6 +28,9 @@
 		A8800BCD19FE817A00250195 /* LevelUp.caf in Resources */ = {isa = PBXBuildFile; fileRef = A8800BC819FE817A00250195 /* LevelUp.caf */; };
 		A8800BCE19FE817A00250195 /* LoseLife.caf in Resources */ = {isa = PBXBuildFile; fileRef = A8800BC919FE817A00250195 /* LoseLife.caf */; };
 		A8800BCF19FE817A00250195 /* PaddleBounce.caf in Resources */ = {isa = PBXBuildFile; fileRef = A8800BCA19FE817A00250195 /* PaddleBounce.caf */; };
+		A8A9341819FF1F5000E6A863 /* BBBall.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A9341719FF1F5000E6A863 /* BBBall.m */; };
+		A8A9341C19FF2E4C00E6A863 /* BBLevelFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A9341B19FF2E4C00E6A863 /* BBLevelFactory.m */; };
+		A8A9342019FF2EC300E6A863 /* BBLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A9341F19FF2EC300E6A863 /* BBLevel.m */; };
 		A8B8AD3919FD71C900B1E00C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B8AD3819FD71C900B1E00C /* main.m */; };
 		A8B8AD3C19FD71C900B1E00C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B8AD3B19FD71C900B1E00C /* AppDelegate.m */; };
 		A8B8AD3F19FD71C900B1E00C /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B8AD3E19FD71C900B1E00C /* GameScene.m */; };
@@ -82,6 +85,12 @@
 		A8800BC819FE817A00250195 /* LevelUp.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LevelUp.caf; sourceTree = "<group>"; };
 		A8800BC919FE817A00250195 /* LoseLife.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LoseLife.caf; sourceTree = "<group>"; };
 		A8800BCA19FE817A00250195 /* PaddleBounce.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PaddleBounce.caf; sourceTree = "<group>"; };
+		A8A9341619FF1F5000E6A863 /* BBBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBall.h; sourceTree = "<group>"; };
+		A8A9341719FF1F5000E6A863 /* BBBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBall.m; sourceTree = "<group>"; };
+		A8A9341A19FF2E4C00E6A863 /* BBLevelFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBLevelFactory.h; sourceTree = "<group>"; };
+		A8A9341B19FF2E4C00E6A863 /* BBLevelFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBLevelFactory.m; sourceTree = "<group>"; };
+		A8A9341E19FF2EC300E6A863 /* BBLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBLevel.h; sourceTree = "<group>"; };
+		A8A9341F19FF2EC300E6A863 /* BBLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBLevel.m; sourceTree = "<group>"; };
 		A8B8AD3319FD71C900B1E00C /* Brick Breaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Brick Breaker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8B8AD3719FD71C900B1E00C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8B8AD3819FD71C900B1E00C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -124,6 +133,8 @@
 		A80BD0BA19FEE005002B004E /* Sprites & Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				A8A9341619FF1F5000E6A863 /* BBBall.h */,
+				A8A9341719FF1F5000E6A863 /* BBBall.m */,
 				A8603FAC19FDE5E70087F31D /* BBBrick.h */,
 				A8603FAD19FDE5E70087F31D /* BBBrick.m */,
 				A8472AEC19FEB7B500BC40D7 /* BBPaddle.h */,
@@ -154,6 +165,7 @@
 			children = (
 				A8472AF219FEBE8D00BC40D7 /* BBConstants.h */,
 				A8472AF319FEBE8D00BC40D7 /* BBConstants.m */,
+				A8A9341919FF2E2800E6A863 /* Level Model */,
 				A80BD0BA19FEE005002B004E /* Sprites & Nodes */,
 				A80BD0BB19FEE03A002B004E /* Actions & Methods */,
 			);
@@ -201,6 +213,17 @@
 				A8800BCA19FE817A00250195 /* PaddleBounce.caf */,
 			);
 			name = Sounds;
+			sourceTree = "<group>";
+		};
+		A8A9341919FF2E2800E6A863 /* Level Model */ = {
+			isa = PBXGroup;
+			children = (
+				A8A9341A19FF2E4C00E6A863 /* BBLevelFactory.h */,
+				A8A9341B19FF2E4C00E6A863 /* BBLevelFactory.m */,
+				A8A9341E19FF2EC300E6A863 /* BBLevel.h */,
+				A8A9341F19FF2EC300E6A863 /* BBLevel.m */,
+			);
+			name = "Level Model";
 			sourceTree = "<group>";
 		};
 		A8B8AD2A19FD71C900B1E00C = {
@@ -399,14 +422,17 @@
 				A8800BBE19FE259900250195 /* BBMenu.m in Sources */,
 				A8B8AD4419FD71C900B1E00C /* GameViewController.m in Sources */,
 				A8B8AD3C19FD71C900B1E00C /* AppDelegate.m in Sources */,
+				A8A9341C19FF2E4C00E6A863 /* BBLevelFactory.m in Sources */,
 				A8472AEE19FEB7B500BC40D7 /* BBPaddle.m in Sources */,
 				A8472AF119FEBDB400BC40D7 /* BBTopBar.m in Sources */,
 				A8472AF419FEBE8D00BC40D7 /* BBConstants.m in Sources */,
+				A8A9342019FF2EC300E6A863 /* BBLevel.m in Sources */,
 				A8472AEB19FEAF9800BC40D7 /* BBResizeToScale.m in Sources */,
 				A8B8AD3F19FD71C900B1E00C /* GameScene.m in Sources */,
 				A80BD0BE19FEF2E3002B004E /* BBHeart.m in Sources */,
 				A8603FAE19FDE5E70087F31D /* BBBrick.m in Sources */,
 				A8B8AD3919FD71C900B1E00C /* main.m in Sources */,
+				A8A9341819FF1F5000E6A863 /* BBBall.m in Sources */,
 				A80BD0B919FECA95002B004E /* BBPlaySounds.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

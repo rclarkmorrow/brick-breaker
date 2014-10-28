@@ -10,10 +10,13 @@
 #import "BBConstants.h"
 #import "BBPaddle.h"
 #import "BBBrick.h"
+#import "BBBall.h"
 #import "BBMenu.h"
 #import "BBTopBar.h"
 #import "BBHeart.h"
 #import "BBPlaySounds.h"
+#import "BBLevelFactory.h"
+
 
 
 @implementation GameScene{
@@ -26,6 +29,7 @@
     BBMenu *_menu;
     BBTopBar *_topBar;
     BBHeart *_heartBar;
+    NSArray *_gameLevels;
     
     //Sounds
     
@@ -35,6 +39,7 @@
     BBPlaySounds *_didPaddleBounce;
     
     //Other Variables
+    
     CGPoint _touchLocation;
     CGFloat _ballSpeed;
     CGFloat _frameWidth;
@@ -61,6 +66,10 @@
     self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, -128, self.frame.size.width, self.frame.size.height + 100)];
     self.physicsBody.categoryBitMask = EDGE_CATEGORY;
+    
+    _brickLayer = [SKNode node];
+    _brickLayer.position = CGPointMake(0, _frameHeight - 28);
+    [self addChild:_brickLayer];
     
     //Load Initial Sound Actions
     
@@ -89,55 +98,25 @@
     
     [self newBall];
     
-    _brickLayer = [SKNode node];
-    _brickLayer.position = CGPointMake(0, _frameHeight - 28);
-    [self addChild:_brickLayer];
-    
     //Initialize Game
     
-    _ballSpeed = 250;
+    BBLevelFactory *factory = [[BBLevelFactory alloc]init];
+    _gameLevels = [factory gameLevels];
+    _ballSpeed = BALL_SPEED;
+    self.lives = STARTING_LIVES;
+    self.currentLevel = 0;
+    [self loadLevel:self.currentLevel];
+    
+    //Set Default Evaluators
+    
     _isBallReleased = NO;
     _isLevelFinished = NO;
     _isPositioningBall = YES;
-    self.currentLevel = 10;
-    self.lives = STARTING_LIVES;
-    [self loadLevel:self.currentLevel];
-
+    
+    
 }
 
-# pragma mark - Ball Methods
-
--(SKSpriteNode *) createBall {
-    SKSpriteNode *ball = [SKSpriteNode spriteNodeWithImageNamed:@"BallBlue"];
-    ball.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ball.size.width * 0.5];
-    ball.name = @"ball";
-    ball.position = CGPointMake(0, _paddle.size.height);
-    ball.physicsBody.linearDamping = 0.0;
-    ball.physicsBody.friction = 0.0;
-    ball.physicsBody.restitution = 1.0;
-    return ball;
-}
-
--(SKSpriteNode *) createBallWithPosition:(CGPoint)position andVelocity:(CGVector)velocity {
-    SKSpriteNode *ball = [self createBall];
-    ball.position = position;
-    ball.physicsBody.velocity = velocity;
-    ball.physicsBody.categoryBitMask = BALL_CATEGORY;
-    ball.physicsBody.contactTestBitMask = PADDLE_CATEGORY | BRICK_CATEGORY | EDGE_CATEGORY;
-    [self addChild: ball];
-    return ball;
-}
-
--(void)newBall {
-    [self enumerateChildNodesWithName:@"ball" usingBlock:^(SKNode *node, BOOL *stop) {
-        [node runAction:[SKAction removeFromParent]];
-    }];
-    [_paddle addChild:[self createBall]];
-    _isBallReleased = NO;
-}
-
-
-#pragma mark - Contact Methods & Parameters
+#pragma mark - Physics Methods & Parameters
 
 
 -(void)didBeginContact:(SKPhysicsContact *)contact {
@@ -177,24 +156,6 @@
 -(void)didEndContact:(SKPhysicsContact *)contact {
 
 }
-
-#pragma mark - Evaluation Methods
-
--(BOOL) didCompleteLevel {
-    for (SKNode *node in _brickLayer.children) {
-        if ([node isKindOfClass:[BBBrick class]]) {
-            if (!((BBBrick*)node).isIndestructible) return NO;
-        }
-    }
-    return YES;
-}
-
--(void)setLives:(int)lives {
-    _lives = lives;
-    _heartBar.lives = lives;
-}
-
-
 
 #pragma mark - UI Touches Methods
 
@@ -247,8 +208,8 @@
                 _isBallReleased = YES;
                 [self runAction:_didPaddleBounce.playSound];
                 [_paddle removeAllChildren];
-                [self createBallWithPosition:CGPointMake(_paddle.position.x, _paddle.position.y + _paddle.size.height)
-                                 andVelocity:CGVectorMake(0, _ballSpeed)];
+                BBBall *ball = [[BBBall alloc]initWithPosition:CGPointMake(_paddle.position.x, _paddle.position.y +_paddle.size.height) andVelocity:CGVectorMake(0, _ballSpeed) andFrameWidth:_frameWidth];
+                [self addChild:ball];
             }
         }
     }
@@ -264,6 +225,13 @@
 
 #pragma mark - Evaluation Methods
 
+//Check Variable Update Methods
+
+-(void)setLives:(int)lives {
+    _lives = lives;
+    _heartBar.lives = lives;
+}
+
 -(void)setCurrentLevel:(int)currentLevel {
     _currentLevel = currentLevel;
     _levelLabel.text = [NSString stringWithFormat:@"LEVEL: %d", currentLevel +1];
@@ -271,20 +239,22 @@
     _topBar.levelNumber = currentLevel;
 }
 
--(void)didSimulatePhysics {
-    [self enumerateChildNodesWithName:@"ball" usingBlock:^(SKNode *node, BOOL *stop) {
-        if (node.frame.origin.y + node.frame.size.height < 0){
-            [node runAction:[SKAction removeFromParent]];
+//Check Level Completion
+
+-(BOOL) didCompleteLevel {
+    for (SKNode *node in _brickLayer.children) {
+        if ([node isKindOfClass:[BBBrick class]]) {
+            if (!((BBBrick*)node).isIndestructible) return NO;
         }
-    }];
+    }
+    return YES;
 }
 
--(void)didEvaluateActions {
-    
-}
+//Sprite Kit Cycle Update Methods
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    
     if ([self didCompleteLevel]) {
         self.currentLevel++;
         [self runAction:_didLevelUp.playSound];
@@ -308,45 +278,44 @@
     }
 }
 
-#pragma mark - Levels
+-(void)didEvaluateActions {
+    //Evaluates before simulating physics
+}
+
+-(void)didSimulatePhysics {
+    //Evaluates about halfway through frame cycle
+    
+    [self enumerateChildNodesWithName:@"ball" usingBlock:^(SKNode *node, BOOL *stop) {
+        if (node.frame.origin.y + node.frame.size.height < 0){
+            [node runAction:[SKAction removeFromParent]];
+        }
+    }];
+}
+
+-(void)didApplyConstraints{
+    //Evaluates after constraints are applied
+}
+
+-(void)didFinishUpdate {
+    //Updates last, but before rendering scene
+}
+
+#pragma mark - Helper Methods
+
+-(void)newBall {
+    [self enumerateChildNodesWithName:@"ball" usingBlock:^(SKNode *node, BOOL *stop) {
+        [node runAction:[SKAction removeFromParent]];
+    }];
+    BBBall *ball = [[BBBall alloc]initWithPosition:CGPointMake(0, _paddle.size.height) andVelocity:CGVectorMake(0, 0) andFrameWidth:_frameWidth];
+    [_paddle addChild:ball];
+    _isBallReleased = NO;
+}
 
 -(void) loadLevel:(int)levelNumber {
     NSArray *level = nil;
-    [_brickLayer removeAllChildren];
-    switch (levelNumber) {
-        
-        case 0:
-            level = @[@[@1,@1,@1,@1,@1,@1],
-                      @[@1,@1,@1,@1,@1,@1],
-                      @[@0,@0,@0,@0,@0,@0],
-                      @[@0,@0,@0,@0,@0,@0],
-                      @[@2,@2,@2,@2,@2,@0]];
-            break;
-        
-        case 1:
-            level = @[@[@1,@1,@2,@2,@1,@1],
-                      @[@2,@2,@0,@0,@2,@2],
-                      @[@2,@0,@0,@0,@0,@2],
-                      @[@1,@0,@1,@1,@0,@1],
-                      @[@1,@1,@3,@3,@1,@1]];
-            break;
-        
-        case 2:
-            level = @[@[@1,@1,@1,@1,@1,@1],
-                      @[@1,@1,@1,@1,@1,@1],
-                      @[@0,@0,@0,@0,@0,@0],
-                      @[@0,@0,@0,@0,@0,@0],
-                      @[@3,@2,@1,@1,@2,@3]];
-            break;
-        
-        default:
-            level = @[@[@0,@0,@0,@0,@0,@0],
-                      @[@0,@0,@0,@0,@0,@0],
-                      @[@0,@0,@0,@0,@0,@0],
-                      @[@0,@0,@0,@0,@0,@0],
-                      @[@1,@0,@0,@0,@0,@0]];
-            break;
-    }
+    NSLog(@"current level: %d", _currentLevel);
+    level = [_gameLevels objectAtIndex:_currentLevel];
+    NSLog(@"Level Array Count: %lu", (unsigned long)level.count);
     int row = 0;
     int col = 0;
     for (NSArray *rowBricks in level) {
@@ -363,9 +332,44 @@
         }
         row++;
     }
-    
-    
 }
 
-
 @end
+
+
+
+//    [_brickLayer removeAllChildren];
+//    switch (levelNumber) {
+//
+//        case 0:
+//            level = @[@[@1,@1,@1,@1,@1,@1],
+//                      @[@1,@1,@1,@1,@1,@1],
+//                      @[@0,@0,@0,@0,@0,@0],
+//                      @[@0,@0,@0,@0,@0,@0],
+//                      @[@2,@2,@2,@2,@2,@0]];
+//            break;
+//
+//        case 1:
+//            level = @[@[@1,@1,@2,@2,@1,@1],
+//                      @[@2,@2,@0,@0,@2,@2],
+//                      @[@2,@0,@0,@0,@0,@2],
+//                      @[@1,@0,@1,@1,@0,@1],
+//                      @[@1,@1,@3,@3,@1,@1]];
+//            break;
+//
+//        case 2:
+//            level = @[@[@1,@1,@1,@1,@1,@1],
+//                      @[@1,@1,@1,@1,@1,@1],
+//                      @[@0,@0,@0,@0,@0,@0],
+//                      @[@0,@0,@0,@0,@0,@0],
+//                      @[@3,@2,@1,@1,@2,@3]];
+//            break;
+//
+//        default:
+//            level = @[@[@0,@0,@0,@0,@0,@0],
+//                      @[@0,@0,@0,@0,@0,@0],
+//                      @[@0,@0,@0,@0,@0,@0],
+//                      @[@0,@0,@0,@0,@0,@0],
+//                      @[@1,@0,@0,@0,@0,@0]];
+//            break;
+//    }

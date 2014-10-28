@@ -29,6 +29,7 @@
         ball.physicsBody.restitution = 1.0;
         ball.physicsBody.categoryBitMask = BALL_CATEGORY;
         ball.physicsBody.contactTestBitMask = PADDLE_CATEGORY | BRICK_CATEGORY | EDGE_CATEGORY;
+        ball.physicsBody.collisionBitMask = PADDLE_CATEGORY | BRICK_CATEGORY | EDGE_CATEGORY;
     }
     return self;
 }

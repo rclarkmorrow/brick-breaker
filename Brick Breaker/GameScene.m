@@ -98,7 +98,8 @@
     
     [self newBall];
     
-    //Initialize Game
+    //Initialize Game. Note: Must occur after menu & UI setup completed so evaluater
+    //functions evaluate with initial values and update UI Elements;
     
     BBLevelFactory *factory = [[BBLevelFactory alloc]init];
     _gameLevels = [factory gameLevels];

@@ -14,25 +14,32 @@
 -(NSArray *)gameLevels {
     
     BBLevel *levelOne = [[BBLevel alloc]init];
-    levelOne.brickRowOne    = @[@1, @1, @1, @1, @1, @1];
-    levelOne.brickRowTwo    = @[@1, @1, @1, @1, @1, @1];
-    levelOne.brickRowThree  = @[@0, @0, @0, @0, @0, @0];
-    levelOne.brickRowFour   = @[@0, @0, @0, @0, @0, @0];
-    levelOne.brickRowFive   = @[@0, @0, @1, @1, @0, @0];
+    levelOne.brickRowOne        = @[@1, @1, @1, @1, @1, @1];
+    levelOne.brickRowTwo        = @[@1, @1, @1, @1, @1, @1];
+    levelOne.brickRowThree      = @[@0, @0, @0, @0, @0, @0];
+    levelOne.brickRowFour       = @[@0, @0, @0, @0, @0, @0];
+    levelOne.brickRowFive       = @[@0, @0, @1, @1, @0, @0];
     
     BBLevel *levelTwo = [[BBLevel alloc]init];
-    levelTwo.brickRowOne    = @[@1, @1, @2, @2, @1, @1];
-    levelTwo.brickRowTwo    = @[@2, @2, @0, @0, @2, @2];
-    levelTwo.brickRowThree  = @[@2, @0, @0, @0, @0, @2];
-    levelTwo.brickRowFour   = @[@1, @0, @1, @1, @0, @1];
-    levelTwo.brickRowFive   = @[@1, @1, @2, @2, @1, @1];
+    levelTwo.brickRowOne        = @[@1, @1, @2, @2, @1, @1];
+    levelTwo.brickRowTwo        = @[@2, @2, @0, @0, @2, @2];
+    levelTwo.brickRowThree      = @[@2, @0, @0, @0, @0, @2];
+    levelTwo.brickRowFour       = @[@1, @0, @1, @1, @0, @1];
+    levelTwo.brickRowFive       = @[@1, @1, @2, @2, @1, @1];
     
     BBLevel *levelThree = [[BBLevel alloc]init];
-    levelThree.brickRowOne    = @[@1, @1, @2, @2, @1, @1];
-    levelThree.brickRowTwo    = @[@1, @1, @1, @1, @1, @1];
-    levelThree.brickRowThree  = @[@0, @0, @3, @3, @0, @0];
-    levelThree.brickRowFour   = @[@0, @0, @0, @0, @0, @0];
-    levelThree.brickRowFive   = @[@3, @2, @1, @1, @2, @3];
+    levelThree.brickRowOne      = @[@1, @1, @2, @2, @1, @1];
+    levelThree.brickRowTwo      = @[@1, @1, @1, @1, @1, @1];
+    levelThree.brickRowThree    = @[@0, @0, @3, @3, @0, @0];
+    levelThree.brickRowFour     = @[@0, @0, @0, @0, @0, @0];
+    levelThree.brickRowFive     = @[@3, @2, @1, @1, @2, @3];
+    
+    BBLevel *levelFour = [[BBLevel alloc]init];
+    levelFour.brickRowOne       = @[@4, @4, @1, @1, @4, @4];
+    levelFour.brickRowTwo       = @[@4, @4, @4, @4, @4, @4];
+    levelFour.brickRowThree     = @[@4, @4, @4, @4, @4, @4];
+    levelFour.brickRowFour      = @[@4, @4, @4, @4, @4, @4];
+    levelFour.brickRowFive      = @[@4, @4, @4, @4, @4, @4];
     
     NSMutableArray *firstLevel = [[NSMutableArray alloc]init];
     [firstLevel addObject:levelOne.brickRowOne];
@@ -55,7 +62,14 @@
     [thirdLevel addObject:levelThree.brickRowFour];
     [thirdLevel addObject:levelThree.brickRowFive];
     
-    NSArray *gameLevels = [[NSArray alloc] initWithObjects:firstLevel, secondLevel, thirdLevel, nil];
+    NSMutableArray *fourthLevel = [[NSMutableArray alloc]init];
+    [fourthLevel addObject:levelFour.brickRowOne];
+    [fourthLevel addObject:levelFour.brickRowTwo];
+    [fourthLevel addObject:levelFour.brickRowThree];
+    [fourthLevel addObject:levelFour.brickRowFour];
+    [fourthLevel addObject:levelFour.brickRowFive];
+    
+    NSArray *gameLevels = [[NSArray alloc] initWithObjects:firstLevel, secondLevel, thirdLevel, fourthLevel, nil];
     
     return gameLevels;
 }

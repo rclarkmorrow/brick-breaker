@@ -13,12 +13,14 @@ typedef enum: NSUInteger {
     Green = 1,
     Blue = 2,
     Grey = 3,
+    Yellow = 4
 } BrickType;
 
 @interface BBBrick : SKSpriteNode
 
 @property (nonatomic)BrickType type;
 @property (nonatomic)BOOL isIndestructible;
+@property (nonatomic)BOOL doesSpawnExtraBall;
 
 -(instancetype)initWithType:(BrickType)type andFrameWidth:(CGFloat)frameWidth;
 -(void)hit;

@@ -146,6 +146,9 @@
     
     if (firstBody.categoryBitMask == BALL_CATEGORY && secondBody.categoryBitMask == BRICK_CATEGORY) {
         if ([secondBody.node respondsToSelector:@selector(hit)]) [secondBody.node performSelector:@selector(hit)];
+        if (((BBBrick*)secondBody.node).doesSpawnExtraBall){
+            [self spawnExtraBall:[_brickLayer convertPoint:secondBody.node.position toNode:self]];
+        }
     }
     
     if (firstBody.categoryBitMask == BALL_CATEGORY && secondBody.categoryBitMask == EDGE_CATEGORY) {
@@ -182,14 +185,16 @@
             //Calculating how far touch moved on X-Axis
             CGFloat xMovement = [touch locationInNode:self].x - _touchLocation.x;
             CGFloat paddleMinX = _paddle.size.width * -0.25;
-            CGFloat paddleMaxX = self.size.width + (_paddle.size.width * 0.25);
+            CGFloat paddleMaxX = _frameWidth + (_paddle.size.width * 0.25);
             
             //Move Paddle
             _paddle.position = CGPointMake(_paddle.position.x +xMovement, _paddle.position.y);
             
-            if (_paddle.position.x < paddleMinX) {
-                _paddle.position = CGPointMake(paddleMinX, _paddle.position.y);
+            if (_isPositioningBall) {
+                paddleMinX = _paddle.size.width * 0.5;
+                paddleMaxX = _frameWidth - (_paddle.size.width * 0.5);
             }
+            if (_paddle.position.x < paddleMinX) _paddle.position = CGPointMake(paddleMinX, _paddle.position.y);
             if (_paddle.position.x > paddleMaxX) _paddle.position = CGPointMake(paddleMaxX, _paddle.position.y);
             
             _touchLocation = [touch locationInNode:self];
@@ -228,6 +233,7 @@
 //Check Variable Update Methods
 
 -(void)setLives:(int)lives {
+    NSLog(@"Did run set Lives");
     _lives = lives;
     _heartBar.lives = lives;
 }
@@ -257,13 +263,14 @@
     
     if ([self didCompleteLevel]) {
         self.currentLevel++;
-        [self runAction:_didLevelUp.playSound];
-        if (self.currentLevel > FINAL_LEVEL_NUMBER) {
-            self.currentLevel = 1;
-        }
+        SKAction *sequence = [SKAction sequence:@[_didLevelUp.playSound, [SKAction waitForDuration:1]]];
+        [self runAction:sequence];
+        if (self.currentLevel > _gameLevels.count) {
+            self.currentLevel = 0;
         [self loadLevel:self.currentLevel];
         [self newBall];
         [_menu show];
+        }
     }
     else if (_isBallReleased && !_isPositioningBall && ![self childNodeWithName:@"ball"]) {
         self.lives--;
@@ -311,11 +318,16 @@
     _isBallReleased = NO;
 }
 
+-(void)spawnExtraBall:(CGPoint)position {
+    CGVector direction;
+    if (arc4random_uniform(2) == 0) direction = CGVectorMake(cosf(M_PI_4), sinf(M_PI_4));
+    else                            direction = CGVectorMake(cosf(M_PI * 0.75), sinf(M_PI * 0.75));
+    BBBall *ball = [[BBBall alloc]initWithPosition: position andVelocity:CGVectorMake(direction.dx * BALL_SPEED, direction.dy * BALL_SPEED) andFrameWidth:_frameWidth];
+    [self addChild:ball];
+}
 -(void) loadLevel:(int)levelNumber {
     NSArray *level = nil;
-    NSLog(@"current level: %d", _currentLevel);
-    level = [_gameLevels objectAtIndex:_currentLevel];
-    NSLog(@"Level Array Count: %lu", (unsigned long)level.count);
+    level = [_gameLevels objectAtIndex:self.currentLevel];
     int row = 0;
     int col = 0;
     for (NSArray *rowBricks in level) {
@@ -335,41 +347,3 @@
 }
 
 @end
-
-
-
-//    [_brickLayer removeAllChildren];
-//    switch (levelNumber) {
-//
-//        case 0:
-//            level = @[@[@1,@1,@1,@1,@1,@1],
-//                      @[@1,@1,@1,@1,@1,@1],
-//                      @[@0,@0,@0,@0,@0,@0],
-//                      @[@0,@0,@0,@0,@0,@0],
-//                      @[@2,@2,@2,@2,@2,@0]];
-//            break;
-//
-//        case 1:
-//            level = @[@[@1,@1,@2,@2,@1,@1],
-//                      @[@2,@2,@0,@0,@2,@2],
-//                      @[@2,@0,@0,@0,@0,@2],
-//                      @[@1,@0,@1,@1,@0,@1],
-//                      @[@1,@1,@3,@3,@1,@1]];
-//            break;
-//
-//        case 2:
-//            level = @[@[@1,@1,@1,@1,@1,@1],
-//                      @[@1,@1,@1,@1,@1,@1],
-//                      @[@0,@0,@0,@0,@0,@0],
-//                      @[@0,@0,@0,@0,@0,@0],
-//                      @[@3,@2,@1,@1,@2,@3]];
-//            break;
-//
-//        default:
-//            level = @[@[@0,@0,@0,@0,@0,@0],
-//                      @[@0,@0,@0,@0,@0,@0],
-//                      @[@0,@0,@0,@0,@0,@0],
-//                      @[@0,@0,@0,@0,@0,@0],
-//                      @[@1,@0,@0,@0,@0,@0]];
-//            break;
-//    }

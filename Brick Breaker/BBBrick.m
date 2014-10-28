@@ -29,6 +29,10 @@
             self = [super initWithImageNamed:@"BrickGrey"];
             self.isIndestructible = YES;
             break;
+        case Yellow:
+            self = [super initWithImageNamed:@"BrickYellow"];
+            self.doesSpawnExtraBall = YES;
+            break;
         default:
             self = nil;
             break;
@@ -50,10 +54,9 @@ if (self) {
 }
 
 -(void)hit {
-
+    
     switch (self.type) {
         case Green:
-            
             [self runAction:_didBrickSmash.playSound];
             [self didBrickBreak];
             [self runAction:[SKAction removeFromParent]];
@@ -65,8 +68,14 @@ if (self) {
             break;
         case Grey:
             [self runAction:_didBallBounce.playSound];
+            
+        case Yellow:
+            [self runAction:_didBrickSmash.playSound];
+            [self didBrickBreak];
+            [self runAction:[SKAction removeFromParent]];
+            break;
         default:
-            //Indestructible bricks with no other effects use default break.
+            NSLog(@"Brick Type in (hit) function defaulting.");
             break;
     }
 }

@@ -17,7 +17,6 @@ static const uint32_t EDGE_CATEGORY     = 0x1 << 3;
 
 //Constants
 
-static const int FINAL_LEVEL_NUMBER = 3;
 static const int STARTING_LIVES = 3;
 static const int BALL_SPEED = 250;
 

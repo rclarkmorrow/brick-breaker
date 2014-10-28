@@ -8,6 +8,16 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface GameScene : SKScene
+@interface GameScene : SKScene <SKPhysicsContactDelegate>
+
+//Tracker Variables
+@property (nonatomic) int score;
+@property (nonatomic) int topScore;
+@property (nonatomic) int lives;
+@property (nonatomic) int currentLevel;
+
+
+//Global Sprite Setup
+
 
 @end

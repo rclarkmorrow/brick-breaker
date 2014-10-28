@@ -7,6 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A80BD0B919FECA95002B004E /* BBPlaySounds.m in Sources */ = {isa = PBXBuildFile; fileRef = A80BD0B819FECA95002B004E /* BBPlaySounds.m */; };
+		A80BD0BE19FEF2E3002B004E /* BBHeart.m in Sources */ = {isa = PBXBuildFile; fileRef = A80BD0BD19FEF2E3002B004E /* BBHeart.m */; };
+		A8472AEB19FEAF9800BC40D7 /* BBResizeToScale.m in Sources */ = {isa = PBXBuildFile; fileRef = A8472AEA19FEAF9800BC40D7 /* BBResizeToScale.m */; };
+		A8472AEE19FEB7B500BC40D7 /* BBPaddle.m in Sources */ = {isa = PBXBuildFile; fileRef = A8472AED19FEB7B500BC40D7 /* BBPaddle.m */; };
+		A8472AF119FEBDB400BC40D7 /* BBTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A8472AF019FEBDB400BC40D7 /* BBTopBar.m */; };
+		A8472AF419FEBE8D00BC40D7 /* BBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A8472AF319FEBE8D00BC40D7 /* BBConstants.m */; };
+		A8603FA819FDDCAB0087F31D /* BrickYellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8603FA719FDDCAB0087F31D /* BrickYellow@2x.png */; };
+		A8603FAA19FDDCC50087F31D /* BrickBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8603FA919FDDCC50087F31D /* BrickBlue@2x.png */; };
+		A8603FAE19FDE5E70087F31D /* BBBrick.m in Sources */ = {isa = PBXBuildFile; fileRef = A8603FAD19FDE5E70087F31D /* BBBrick.m */; };
+		A8603FB019FDF53E0087F31D /* BrickGrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8603FAF19FDF53E0087F31D /* BrickGrey@2x.png */; };
+		A8603FB319FE037D0087F31D /* HeartEmpty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8603FB119FE037D0087F31D /* HeartEmpty@2x.png */; };
+		A8603FB419FE037D0087F31D /* HeartFull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8603FB219FE037D0087F31D /* HeartFull@2x.png */; };
+		A8771A6919FE215A004EA581 /* BrickBreak.sks in Resources */ = {isa = PBXBuildFile; fileRef = A8771A6719FE215A004EA581 /* BrickBreak.sks */; };
+		A8800BBE19FE259900250195 /* BBMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A8800BBD19FE259900250195 /* BBMenu.m */; };
+		A8800BC119FE25EE00250195 /* Button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8800BBF19FE25EE00250195 /* Button@2x.png */; };
+		A8800BC219FE25EE00250195 /* MenuPanel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8800BC019FE25EE00250195 /* MenuPanel@2x.png */; };
+		A8800BCB19FE817A00250195 /* BallBounce.caf in Resources */ = {isa = PBXBuildFile; fileRef = A8800BC619FE817A00250195 /* BallBounce.caf */; };
+		A8800BCC19FE817A00250195 /* BrickSmash.caf in Resources */ = {isa = PBXBuildFile; fileRef = A8800BC719FE817A00250195 /* BrickSmash.caf */; };
+		A8800BCD19FE817A00250195 /* LevelUp.caf in Resources */ = {isa = PBXBuildFile; fileRef = A8800BC819FE817A00250195 /* LevelUp.caf */; };
+		A8800BCE19FE817A00250195 /* LoseLife.caf in Resources */ = {isa = PBXBuildFile; fileRef = A8800BC919FE817A00250195 /* LoseLife.caf */; };
+		A8800BCF19FE817A00250195 /* PaddleBounce.caf in Resources */ = {isa = PBXBuildFile; fileRef = A8800BCA19FE817A00250195 /* PaddleBounce.caf */; };
 		A8B8AD3919FD71C900B1E00C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B8AD3819FD71C900B1E00C /* main.m */; };
 		A8B8AD3C19FD71C900B1E00C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B8AD3B19FD71C900B1E00C /* AppDelegate.m */; };
 		A8B8AD3F19FD71C900B1E00C /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B8AD3E19FD71C900B1E00C /* GameScene.m */; };
@@ -32,6 +53,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A80BD0B719FECA95002B004E /* BBPlaySounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPlaySounds.h; sourceTree = "<group>"; };
+		A80BD0B819FECA95002B004E /* BBPlaySounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPlaySounds.m; sourceTree = "<group>"; };
+		A80BD0BC19FEF2E3002B004E /* BBHeart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBHeart.h; sourceTree = "<group>"; };
+		A80BD0BD19FEF2E3002B004E /* BBHeart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBHeart.m; sourceTree = "<group>"; };
+		A8472AE919FEAF9800BC40D7 /* BBResizeToScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBResizeToScale.h; sourceTree = "<group>"; };
+		A8472AEA19FEAF9800BC40D7 /* BBResizeToScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBResizeToScale.m; sourceTree = "<group>"; };
+		A8472AEC19FEB7B500BC40D7 /* BBPaddle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPaddle.h; sourceTree = "<group>"; };
+		A8472AED19FEB7B500BC40D7 /* BBPaddle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPaddle.m; sourceTree = "<group>"; };
+		A8472AEF19FEBDB400BC40D7 /* BBTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTopBar.h; sourceTree = "<group>"; };
+		A8472AF019FEBDB400BC40D7 /* BBTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBTopBar.m; sourceTree = "<group>"; };
+		A8472AF219FEBE8D00BC40D7 /* BBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBConstants.h; sourceTree = "<group>"; };
+		A8472AF319FEBE8D00BC40D7 /* BBConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBConstants.m; sourceTree = "<group>"; };
+		A8603FA719FDDCAB0087F31D /* BrickYellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BrickYellow@2x.png"; sourceTree = "<group>"; };
+		A8603FA919FDDCC50087F31D /* BrickBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BrickBlue@2x.png"; sourceTree = "<group>"; };
+		A8603FAC19FDE5E70087F31D /* BBBrick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBrick.h; sourceTree = "<group>"; };
+		A8603FAD19FDE5E70087F31D /* BBBrick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBrick.m; sourceTree = "<group>"; };
+		A8603FAF19FDF53E0087F31D /* BrickGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BrickGrey@2x.png"; sourceTree = "<group>"; };
+		A8603FB119FE037D0087F31D /* HeartEmpty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HeartEmpty@2x.png"; sourceTree = "<group>"; };
+		A8603FB219FE037D0087F31D /* HeartFull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HeartFull@2x.png"; sourceTree = "<group>"; };
+		A8771A6719FE215A004EA581 /* BrickBreak.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BrickBreak.sks; sourceTree = "<group>"; };
+		A8800BBC19FE259900250195 /* BBMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMenu.h; sourceTree = "<group>"; };
+		A8800BBD19FE259900250195 /* BBMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMenu.m; sourceTree = "<group>"; };
+		A8800BBF19FE25EE00250195 /* Button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button@2x.png"; sourceTree = "<group>"; };
+		A8800BC019FE25EE00250195 /* MenuPanel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuPanel@2x.png"; sourceTree = "<group>"; };
+		A8800BC619FE817A00250195 /* BallBounce.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BallBounce.caf; sourceTree = "<group>"; };
+		A8800BC719FE817A00250195 /* BrickSmash.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BrickSmash.caf; sourceTree = "<group>"; };
+		A8800BC819FE817A00250195 /* LevelUp.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LevelUp.caf; sourceTree = "<group>"; };
+		A8800BC919FE817A00250195 /* LoseLife.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LoseLife.caf; sourceTree = "<group>"; };
+		A8800BCA19FE817A00250195 /* PaddleBounce.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PaddleBounce.caf; sourceTree = "<group>"; };
 		A8B8AD3319FD71C900B1E00C /* Brick Breaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Brick Breaker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8B8AD3719FD71C900B1E00C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8B8AD3819FD71C900B1E00C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -71,6 +121,88 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A80BD0BA19FEE005002B004E /* Sprites & Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				A8603FAC19FDE5E70087F31D /* BBBrick.h */,
+				A8603FAD19FDE5E70087F31D /* BBBrick.m */,
+				A8472AEC19FEB7B500BC40D7 /* BBPaddle.h */,
+				A8472AED19FEB7B500BC40D7 /* BBPaddle.m */,
+				A80BD0BC19FEF2E3002B004E /* BBHeart.h */,
+				A80BD0BD19FEF2E3002B004E /* BBHeart.m */,
+				A8800BBC19FE259900250195 /* BBMenu.h */,
+				A8800BBD19FE259900250195 /* BBMenu.m */,
+				A8472AEF19FEBDB400BC40D7 /* BBTopBar.h */,
+				A8472AF019FEBDB400BC40D7 /* BBTopBar.m */,
+			);
+			name = "Sprites & Nodes";
+			sourceTree = "<group>";
+		};
+		A80BD0BB19FEE03A002B004E /* Actions & Methods */ = {
+			isa = PBXGroup;
+			children = (
+				A80BD0B719FECA95002B004E /* BBPlaySounds.h */,
+				A80BD0B819FECA95002B004E /* BBPlaySounds.m */,
+				A8472AE919FEAF9800BC40D7 /* BBResizeToScale.h */,
+				A8472AEA19FEAF9800BC40D7 /* BBResizeToScale.m */,
+			);
+			name = "Actions & Methods";
+			sourceTree = "<group>";
+		};
+		A8603FAB19FDE5B60087F31D /* Classes And Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A8472AF219FEBE8D00BC40D7 /* BBConstants.h */,
+				A8472AF319FEBE8D00BC40D7 /* BBConstants.m */,
+				A80BD0BA19FEE005002B004E /* Sprites & Nodes */,
+				A80BD0BB19FEE03A002B004E /* Actions & Methods */,
+			);
+			name = "Classes And Constants";
+			sourceTree = "<group>";
+		};
+		A8771A6619FE2130004EA581 /* Particle Files */ = {
+			isa = PBXGroup;
+			children = (
+				A8771A6719FE215A004EA581 /* BrickBreak.sks */,
+			);
+			name = "Particle Files";
+			sourceTree = "<group>";
+		};
+		A8800BC319FE7F9200250195 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A8B8AD3A19FD71C900B1E00C /* AppDelegate.h */,
+				A8B8AD3B19FD71C900B1E00C /* AppDelegate.m */,
+				A8B8AD4219FD71C900B1E00C /* GameViewController.h */,
+				A8B8AD4319FD71C900B1E00C /* GameViewController.m */,
+				A8B8AD4519FD71C900B1E00C /* Main.storyboard */,
+				A8B8AD4A19FD71C900B1E00C /* LaunchScreen.xib */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		A8800BC419FE7FCC00250195 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A8B8AD3D19FD71C900B1E00C /* GameScene.h */,
+				A8B8AD3E19FD71C900B1E00C /* GameScene.m */,
+				A8B8AD4019FD71C900B1E00C /* GameScene.sks */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		A8800BC519FE815400250195 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				A8800BC619FE817A00250195 /* BallBounce.caf */,
+				A8800BC719FE817A00250195 /* BrickSmash.caf */,
+				A8800BC819FE817A00250195 /* LevelUp.caf */,
+				A8800BC919FE817A00250195 /* LoseLife.caf */,
+				A8800BCA19FE817A00250195 /* PaddleBounce.caf */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		A8B8AD2A19FD71C900B1E00C = {
 			isa = PBXGroup;
 			children = (
@@ -92,17 +224,10 @@
 		A8B8AD3519FD71C900B1E00C /* Brick Breaker */ = {
 			isa = PBXGroup;
 			children = (
-				A8B8AD6219FD721400B1E00C /* Images */,
-				A8B8AD3A19FD71C900B1E00C /* AppDelegate.h */,
-				A8B8AD3B19FD71C900B1E00C /* AppDelegate.m */,
-				A8B8AD3D19FD71C900B1E00C /* GameScene.h */,
-				A8B8AD3E19FD71C900B1E00C /* GameScene.m */,
-				A8B8AD4019FD71C900B1E00C /* GameScene.sks */,
-				A8B8AD4219FD71C900B1E00C /* GameViewController.h */,
-				A8B8AD4319FD71C900B1E00C /* GameViewController.m */,
-				A8B8AD4519FD71C900B1E00C /* Main.storyboard */,
-				A8B8AD4819FD71C900B1E00C /* Images.xcassets */,
-				A8B8AD4A19FD71C900B1E00C /* LaunchScreen.xib */,
+				A8800BC319FE7F9200250195 /* Main */,
+				A8800BC419FE7FCC00250195 /* Scenes */,
+				A8603FAB19FDE5B60087F31D /* Classes And Constants */,
+				A8771A6619FE2130004EA581 /* Particle Files */,
 				A8B8AD3619FD71C900B1E00C /* Supporting Files */,
 			);
 			path = "Brick Breaker";
@@ -111,6 +236,8 @@
 		A8B8AD3619FD71C900B1E00C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A8B8AD6219FD721400B1E00C /* Images */,
+				A8800BC519FE815400250195 /* Sounds */,
 				A8B8AD3719FD71C900B1E00C /* Info.plist */,
 				A8B8AD3819FD71C900B1E00C /* main.m */,
 			);
@@ -137,9 +264,17 @@
 		A8B8AD6219FD721400B1E00C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A8B8AD4819FD71C900B1E00C /* Images.xcassets */,
 				A8B8AD6319FD725D00B1E00C /* BallBlue@2x.png */,
+				A8603FA919FDDCC50087F31D /* BrickBlue@2x.png */,
 				A8B8AD6419FD725D00B1E00C /* BrickGreen@2x.png */,
+				A8603FAF19FDF53E0087F31D /* BrickGrey@2x.png */,
+				A8603FA719FDDCAB0087F31D /* BrickYellow@2x.png */,
+				A8603FB119FE037D0087F31D /* HeartEmpty@2x.png */,
+				A8603FB219FE037D0087F31D /* HeartFull@2x.png */,
 				A8B8AD6519FD725D00B1E00C /* Paddle@2x.png */,
+				A8800BBF19FE25EE00250195 /* Button@2x.png */,
+				A8800BC019FE25EE00250195 /* MenuPanel@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -224,12 +359,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8800BCD19FE817A00250195 /* LevelUp.caf in Resources */,
+				A8800BCE19FE817A00250195 /* LoseLife.caf in Resources */,
+				A8603FAA19FDDCC50087F31D /* BrickBlue@2x.png in Resources */,
 				A8B8AD4C19FD71C900B1E00C /* LaunchScreen.xib in Resources */,
 				A8B8AD4919FD71C900B1E00C /* Images.xcassets in Resources */,
+				A8603FB019FDF53E0087F31D /* BrickGrey@2x.png in Resources */,
+				A8800BCF19FE817A00250195 /* PaddleBounce.caf in Resources */,
 				A8B8AD6719FD725D00B1E00C /* BrickGreen@2x.png in Resources */,
+				A8800BC219FE25EE00250195 /* MenuPanel@2x.png in Resources */,
 				A8B8AD6619FD725D00B1E00C /* BallBlue@2x.png in Resources */,
+				A8800BC119FE25EE00250195 /* Button@2x.png in Resources */,
+				A8603FB319FE037D0087F31D /* HeartEmpty@2x.png in Resources */,
+				A8771A6919FE215A004EA581 /* BrickBreak.sks in Resources */,
 				A8B8AD6819FD725D00B1E00C /* Paddle@2x.png in Resources */,
+				A8603FB419FE037D0087F31D /* HeartFull@2x.png in Resources */,
 				A8B8AD4119FD71C900B1E00C /* GameScene.sks in Resources */,
+				A8800BCC19FE817A00250195 /* BrickSmash.caf in Resources */,
+				A8800BCB19FE817A00250195 /* BallBounce.caf in Resources */,
+				A8603FA819FDDCAB0087F31D /* BrickYellow@2x.png in Resources */,
 				A8B8AD4719FD71C900B1E00C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,10 +396,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8800BBE19FE259900250195 /* BBMenu.m in Sources */,
 				A8B8AD4419FD71C900B1E00C /* GameViewController.m in Sources */,
 				A8B8AD3C19FD71C900B1E00C /* AppDelegate.m in Sources */,
+				A8472AEE19FEB7B500BC40D7 /* BBPaddle.m in Sources */,
+				A8472AF119FEBDB400BC40D7 /* BBTopBar.m in Sources */,
+				A8472AF419FEBE8D00BC40D7 /* BBConstants.m in Sources */,
+				A8472AEB19FEAF9800BC40D7 /* BBResizeToScale.m in Sources */,
 				A8B8AD3F19FD71C900B1E00C /* GameScene.m in Sources */,
+				A80BD0BE19FEF2E3002B004E /* BBHeart.m in Sources */,
+				A8603FAE19FDE5E70087F31D /* BBBrick.m in Sources */,
 				A8B8AD3919FD71C900B1E00C /* main.m in Sources */,
+				A80BD0B919FECA95002B004E /* BBPlaySounds.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +598,7 @@
 				A8B8AD5D19FD71C900B1E00C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A8B8AD5E19FD71C900B1E00C /* Build configuration list for PBXNativeTarget "Brick BreakerTests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +607,7 @@
 				A8B8AD6019FD71C900B1E00C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

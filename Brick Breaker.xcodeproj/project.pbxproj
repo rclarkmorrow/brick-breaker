@@ -165,7 +165,6 @@
 			children = (
 				A8472AF219FEBE8D00BC40D7 /* BBConstants.h */,
 				A8472AF319FEBE8D00BC40D7 /* BBConstants.m */,
-				A8A9341919FF2E2800E6A863 /* Level Model */,
 				A80BD0BA19FEE005002B004E /* Sprites & Nodes */,
 				A80BD0BB19FEE03A002B004E /* Actions & Methods */,
 			);
@@ -249,6 +248,7 @@
 			children = (
 				A8800BC319FE7F9200250195 /* Main */,
 				A8800BC419FE7FCC00250195 /* Scenes */,
+				A8A9341919FF2E2800E6A863 /* Level Model */,
 				A8603FAB19FDE5B60087F31D /* Classes And Constants */,
 				A8771A6619FE2130004EA581 /* Particle Files */,
 				A8B8AD3619FD71C900B1E00C /* Supporting Files */,

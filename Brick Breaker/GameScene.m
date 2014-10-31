@@ -47,6 +47,7 @@
     BOOL _isBallReleased;
     BOOL _isPositioningBall;
     BOOL _isLevelFinished;
+    BOOL _isTestMode;
     
     //Game Object Arrays.
     
@@ -58,6 +59,8 @@
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
 
+    _isTestMode = NO;
+    
     //Base Game Physics, Bounds & Layers
     
     _frameWidth = self.frame.size.width;
@@ -237,7 +240,7 @@
 //Check Variable Update Methods for UI Updates.
 
 -(void)setLives:(int)lives {
-    NSLog(@"Did run set Lives");
+    
     _lives = lives;
     
     //Passing current lives to heart class to update heart display array.
@@ -277,15 +280,16 @@
     //Check for Level Completion, Loss of Life  &  Game Loss at the start of the frame load cycle.
     
     if ([self didCompleteLevel]) {
+        
         self.currentLevel++;
         SKAction *sequence = [SKAction sequence:@[_didLevelUp.playSound, [SKAction waitForDuration:1]]];
         [self runAction:sequence];
-        if (self.currentLevel > _gameLevels.count) {
-            self.currentLevel = 0;
+        
+        
+        if (self.currentLevel >= _gameLevels.count) self.currentLevel = 0;
         [self loadLevel:self.currentLevel];
         [self newBall];
         [_menu show];
-        }
     }
     else if (_isBallReleased && !_isPositioningBall && ![self childNodeWithName:@"ball"]) {
         self.lives--;
@@ -344,25 +348,54 @@
     BBBall *ball = [[BBBall alloc]initWithPosition: position andVelocity:CGVectorMake(direction.dx * BALL_SPEED, direction.dy * BALL_SPEED) andFrameWidth:_frameWidth];
     [self addChild:ball];
 }
+
 -(void) loadLevel:(int)levelNumber {
     NSArray *level = nil;
-    level = [_gameLevels objectAtIndex:self.currentLevel];
-    int row = 0;
-    int col = 0;
-    for (NSArray *rowBricks in level) {
-        col = 0;
-        for (NSNumber *brickType in rowBricks){
-            if ([brickType intValue] > 0) {
-                BBBrick *brick = [[BBBrick alloc] initWithType:(BrickType)[brickType intValue] andFrameWidth:_frameWidth];
-                if (brick){
-                    brick.position = CGPointMake((_frameWidth / 160) + (brick.size.width * 0.5) + ((brick.size.width + 4) * col), -((_frameWidth / 160) + (brick.size.height * 0.5) + ((brick.size.height + 3) * row)));
-                    [_brickLayer addChild:brick];
+    
+    if (_isTestMode == YES) {
+        
+        level = @[@[@1, @1, @1, @1, @1, @1],
+                  @[@1, @1, @1, @1, @1, @1],
+                  @[@4, @4, @4, @4, @4, @4],
+                  @[@4, @4, @4, @4, @4, @4],
+                  @[@4, @4, @4, @4, @4, @4]];
+        
+        int row = 0;
+        int col = 0;
+        for (NSArray *rowBricks in level) {
+            col = 0;
+            for (NSNumber *brickType in rowBricks){
+                if ([brickType intValue] > 0) {
+                    BBBrick *brick = [[BBBrick alloc] initWithType:(BrickType)[brickType intValue] andFrameWidth:_frameWidth];
+                    if (brick){
+                        brick.position = CGPointMake((_frameWidth / 160) + (brick.size.width * 0.5) + ((brick.size.width + 4) * col), -((_frameWidth / 160) + (brick.size.height * 0.5) + ((brick.size.height + 3) * row)));
+                        [_brickLayer addChild:brick];
+                    }
                 }
+                col++;
             }
-            col++;
+            row++;
         }
-        row++;
+    }
+    else {
+     
+        level = [_gameLevels objectAtIndex:self.currentLevel];
+        int row = 0;
+        int col = 0;
+        for (NSArray *rowBricks in level) {
+            col = 0;
+            for (NSNumber *brickType in rowBricks){
+                if ([brickType intValue] > 0) {
+                    BBBrick *brick = [[BBBrick alloc] initWithType:(BrickType)[brickType intValue] andFrameWidth:_frameWidth];
+                    if (brick){
+                        brick.position = CGPointMake((_frameWidth / 160) + (brick.size.width * 0.5) + ((brick.size.width + 4) * col), -((_frameWidth / 160) + (brick.size.height * 0.5) + ((brick.size.height + 3) * row)));
+                        [_brickLayer addChild:brick];
+                    }
+                }
+                col++;
+            }
+            row++;
+        }
     }
 }
-
 @end

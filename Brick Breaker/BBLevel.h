@@ -12,10 +12,6 @@
 
 //Level properties- only needs to be one array with embeded arrays.
 
-@property (strong, nonatomic) NSArray *brickRowOne;
-@property (strong, nonatomic) NSArray *brickRowTwo;
-@property (strong, nonatomic) NSArray *brickRowThree;
-@property (strong, nonatomic) NSArray *brickRowFour;
-@property (strong, nonatomic) NSArray *brickRowFive;
+@property (strong, nonatomic) NSArray *level;
 
 @end

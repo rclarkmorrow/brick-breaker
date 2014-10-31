@@ -48,7 +48,6 @@
         displayHeart.position = CGPointMake(frameWidth - ((frameWidth / 20) + (frameWidth / 11.03) * i), frameHeight - 14);
         [self.hearts addObject:displayHeart];
         [self addChild:displayHeart];
-        NSLog(@"Did add initial Full Heart");
     }
 }
 
